@@ -1,36 +1,127 @@
-let s:shade0 =  "#181A1F"
-let s:shade1 =  "#383E4A"
-let s:shade2 =  "#919191"
-let s:shade3 =  "#C5C5C5"
-let s:shade4 =  "#D7DAE0"
-let s:shade5 =  "#F6F6F6"
-let s:shade6 =  "#F8FAFD"
-let s:shade7 =  "#ffffff"
-let s:accent0 = "#81F900" "green
-let s:accent1 = "#FFD945" "yellow
-let s:accent2 = "#E373CE" "magenta
-let s:accent3 = "#FF3F4F" "red
-let s:accent4 = "#19D1E5" "cyan
-let s:accent5 = "#FF9700" "orange
-
+"{{{Palette
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-let s:p.normal.left = [ [ s:shade1, s:accent4 ], [ s:shade7, s:shade2 ] ]
-let s:p.normal.right = [ [ s:shade1, s:shade4 ], [ s:shade5, s:shade2 ] ]
-let s:p.normal.error = [ [ s:shade1, s:accent3 ] ]
-let s:p.normal.warning = [ [ s:shade1, s:accent5 ] ]
-let s:p.normal.middle = [ [ s:shade5, s:shade1 ] ]
+let s:dark      = [ '#181A1F', 235 ]
+let s:darker    = [ '#191B20', 236 ]
+let s:darkgrey  = [ '#383E4A', 240 ]
+let s:red       = [ '#FF3F4F', 167 ]
+let s:green     = [ '#81F900', 142 ]
+let s:orange    = [ '#FF9700', 208 ]
+let s:white     = [ '#F6F6F6', 223 ]
+let s:golden    = [ '#528bff', 223 ]
+"}}}
 
-let s:p.insert.left = [ [ s:shade1, s:accent0 ], [ s:shade7, s:shade2 ] ]
-let s:p.replace.left = [ [ s:shade1, s:accent2 ], [ s:shade7, s:shade2 ] ]
-let s:p.visual.left = [ [ s:shade1, s:accent2 ], [ s:shade7, s:shade2 ] ]
+"{{{Definition
+let s:tab_l_fg = s:white
+let s:tab_l_bg = s:darkgrey
+let s:tab_r_fg = s:dark
+let s:tab_r_bg = s:green
+let s:tab_sel_fg = s:dark
+let s:tab_sel_bg = s:green
+let s:tab_middle_fg = s:white
+let s:tab_middle_bg = s:darker
 
-let s:p.inactive.right = [ [ s:shade1, s:shade3 ], [ s:shade3, s:shade1 ] ]
-let s:p.inactive.left =  [ [ s:shade4, s:shade1 ], [ s:shade3, s:shade0 ] ]
-let s:p.inactive.middle = [ [ s:shade4, s:shade1 ] ]
+let s:warningfg = s:dark
+let s:warningbg = s:orange
+let s:errorfg = s:dark
+let s:errorbg = s:red
 
-let s:p.tabline.left = [ [ s:shade6, s:shade2 ] ]
-let s:p.tabline.tabsel = [ [ s:shade1, s:accent1 ] ]
-let s:p.tabline.middle = copy(s:p.normal.middle)
-let s:p.tabline.right = copy(s:p.normal.middle)
+let s:normal_l1_fg = s:dark
+let s:normal_l1_bg = s:green
+let s:normal_l2_fg = s:white
+let s:normal_l2_bg = s:darkgrey
+let s:normal_r1_fg = s:dark
+let s:normal_r1_bg = s:green
+let s:normal_r2_fg = s:white
+let s:normal_r2_bg = s:darkgrey
+let s:normal_middle_fg = s:white
+let s:normal_middle_bg = s:darker
 
-let g:lightline#colorscheme#monokai_vibrant#palette = lightline#colorscheme#fill(s:p)
+let s:insert_l1_fg = s:dark
+let s:insert_l1_bg = s:golden
+let s:insert_l2_fg = s:white
+let s:insert_l2_bg = s:darkgrey
+let s:insert_r1_fg = s:dark
+let s:insert_r1_bg = s:golden
+let s:insert_r2_fg = s:white
+let s:insert_r2_bg = s:darkgrey
+let s:insert_middle_fg = s:white
+let s:insert_middle_bg = s:darker
+
+let s:visual_l1_fg = s:dark
+let s:visual_l1_bg = s:red
+let s:visual_l2_fg = s:white
+let s:visual_l2_bg = s:darkgrey
+let s:visual_r1_fg = s:dark
+let s:visual_r1_bg = s:red
+let s:visual_r2_fg = s:white
+let s:visual_r2_bg = s:darkgrey
+let s:visual_middle_fg = s:white
+let s:visual_middle_bg = s:darker
+
+let s:replace_l1_fg = s:dark
+let s:replace_l1_bg = s:orange
+let s:replace_l2_fg = s:white
+let s:replace_l2_bg = s:darkgrey
+let s:replace_r1_fg = s:dark
+let s:replace_r1_bg = s:orange
+let s:replace_r2_fg = s:white
+let s:replace_r2_bg = s:darkgrey
+let s:replace_middle_fg = s:white
+let s:replace_middle_bg = s:darker
+
+let s:inactive_l1_fg = s:white
+let s:inactive_l1_bg = s:darkgrey
+let s:inactive_l2_fg = s:white
+let s:inactive_l2_bg = s:darkgrey
+let s:inactive_r1_fg = s:white
+let s:inactive_r1_bg = s:darkgrey
+let s:inactive_r2_fg = s:white
+let s:inactive_r2_bg = s:darkgrey
+let s:inactive_middle_fg = s:white
+let s:inactive_middle_bg = s:darker
+"}}}
+
+"{{{Implementation
+let s:p.normal.middle = [ [ s:normal_middle_fg, s:normal_middle_bg ] ]
+let s:p.normal.left = [ [ s:normal_l1_fg, s:normal_l1_bg, 'bold' ], [ s:normal_l2_fg, s:normal_l2_bg ] ]
+let s:p.normal.right = [ [ s:normal_r1_fg, s:normal_r1_bg, 'bold' ], [ s:normal_r2_fg, s:normal_r2_bg ] ]
+
+let s:p.insert.middle = [ [ s:insert_middle_fg, s:insert_middle_bg ] ]
+let s:p.insert.left = [ [ s:insert_l1_fg, s:insert_l1_bg, 'bold' ], [ s:insert_l2_fg, s:insert_l2_bg ] ]
+let s:p.insert.right = [ [ s:insert_r1_fg, s:insert_r1_bg, 'bold' ], [ s:insert_r2_fg, s:insert_r2_bg ] ]
+
+let s:p.visual.middle = [ [ s:visual_middle_fg, s:visual_middle_bg ] ]
+let s:p.visual.left = [ [ s:visual_l1_fg, s:visual_l1_bg, 'bold' ], [ s:visual_l2_fg, s:visual_l2_bg ] ]
+let s:p.visual.right = [ [ s:visual_r1_fg, s:visual_r1_bg, 'bold' ], [ s:visual_r2_fg, s:visual_r2_bg ] ]
+
+let s:p.replace.middle = [ [ s:replace_middle_fg, s:replace_middle_bg ] ]
+let s:p.replace.left = [ [ s:replace_l1_fg, s:replace_l1_bg, 'bold' ], [ s:replace_l2_fg, s:replace_l2_bg ] ]
+let s:p.replace.right = [ [ s:replace_r1_fg, s:replace_r1_bg, 'bold' ], [ s:replace_r2_fg, s:replace_r2_bg ] ]
+
+let s:p.inactive.left = [ [ s:inactive_l1_fg, s:inactive_l1_bg ], [ s:inactive_l2_fg, s:inactive_l2_bg ] ]
+let s:p.inactive.middle = [ [ s:inactive_middle_fg, s:inactive_middle_bg ] ]
+let s:p.inactive.right = [ [ s:inactive_r1_fg, s:inactive_r1_bg ], [ s:inactive_r2_fg, s:inactive_r2_bg ] ]
+
+let s:p.tabline.left = [ [ s:tab_l_fg, s:tab_l_bg] ]
+let s:p.tabline.right = [ [ s:tab_r_fg, s:tab_r_bg] ]
+let s:p.tabline.tabsel = [ [ s:tab_sel_fg, s:tab_sel_bg, 'bold' ] ]
+let s:p.tabline.middle = [ [ s:tab_middle_fg, s:tab_middle_bg] ]
+
+let s:p.normal.error = [ [ s:errorfg, s:errorbg ] ]
+let s:p.normal.warning = [ [ s:warningfg, s:warningbg ] ]
+
+
+if get(g:, 'monokai_vibrant_lightline_disable_bold', 0)
+    let s:p.normal.left = [ [ s:normal_l1_fg, s:normal_l1_bg ], [ s:normal_l2_fg, s:normal_l2_bg ] ]
+    let s:p.normal.right = [ [ s:normal_r1_fg, s:normal_r1_bg ], [ s:normal_r2_fg, s:normal_r2_bg ] ]
+    let s:p.insert.left = [ [ s:insert_l1_fg, s:insert_l1_bg ], [ s:insert_l2_fg, s:insert_l2_bg ] ]
+    let s:p.insert.right = [ [ s:insert_r1_fg, s:insert_r1_bg ], [ s:insert_r2_fg, s:insert_r2_bg ] ]
+    let s:p.visual.left = [ [ s:visual_l1_fg, s:visual_l1_bg ], [ s:visual_l2_fg, s:visual_l2_bg ] ]
+    let s:p.visual.right = [ [ s:visual_r1_fg, s:visual_r1_bg ], [ s:visual_r2_fg, s:visual_r2_bg ] ]
+    let s:p.replace.left = [ [ s:replace_l1_fg, s:replace_l1_bg ], [ s:replace_l2_fg, s:replace_l2_bg ] ]
+    let s:p.replace.right = [ [ s:replace_r1_fg, s:replace_r1_bg ], [ s:replace_r2_fg, s:replace_r2_bg ] ]
+    let s:p.tabline.tabsel = [ [ s:tab_sel_fg, s:tab_sel_bg ] ]
+endif
+"}}}
+
+let g:lightline#colorscheme#monokai_vibrant#palette = lightline#colorscheme#flatten(s:p)
