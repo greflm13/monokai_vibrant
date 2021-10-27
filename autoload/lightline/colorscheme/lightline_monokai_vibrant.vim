@@ -124,4 +124,4 @@ if get(g:, 'monokai_vibrant_lightline_disable_bold', 0)
 endif
 "}}}
 
-let g:lightline#colorscheme#monokai_vibrant#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#lightline_monokai_vibrant#palette = lightline#colorscheme#flatten(s:p)
