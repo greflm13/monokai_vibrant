@@ -1,6 +1,6 @@
 " Vim color file
 " Author: Florian Greistorfer
-" Colorscheme Name: monokai vibrant
+" Colorscheme Name: monokai_vibrant
 " Inspired by https://github.com/dylantmarsh/monokai-vibrant
 
 set background=dark
@@ -10,7 +10,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "monokai-vibrant"
+let g:colors_name = "monokai_vibrant"
 
 " Default group
 hi Cursor ctermfg=236 ctermbg=231 cterm=NONE guifg=#16171d guibg=#f6f6f6 gui=NONE
