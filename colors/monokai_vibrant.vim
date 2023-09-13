@@ -1,5 +1,5 @@
 " Vim color file
-" Author: Florian Greistorfer
+" Author: Flo Greistorfer
 " Colorscheme Name: monokai_vibrant
 " Inspired by https://github.com/dylantmarsh/monokai-vibrant
 
@@ -25,7 +25,7 @@ hi MatchParen ctermfg=204 ctermbg=NONE cterm=underline guifg=#ff3f4f guibg=NONE 
 hi StatusLine ctermfg=231 ctermbg=59 cterm=bold guifg=#f6f6f6 guibg=#696769 gui=bold
 hi StatusLineNC ctermfg=231 ctermbg=59 cterm=NONE guifg=#f6f6f6 guibg=#696769 gui=NONE
 hi Pmenu ctermfg=150 ctermbg=NONE cterm=NONE guifg=#81f900 guibg=NONE gui=NONE
-hi PmenuSel ctermfg=NONE ctermbg=5<9 cterm=NONE guifg=NONE guibg=#16171d gui=NONE
+hi PmenuSel ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#16171d gui=NONE
 hi IncSearch ctermfg=236 ctermbg=221 cterm=NONE guifg=#16171d guibg=#ffd945 gui=NONE
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi Directory ctermfg=209 ctermbg=NONE cterm=NONE guifg=#86b6c2 guibg=NONE gui=NONE
